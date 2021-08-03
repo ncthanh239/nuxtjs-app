@@ -12,7 +12,25 @@ export default {
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: '/bower_components/bootstrap/dist/css/bootstrap.min.css' },
+      { rel: 'stylesheet', href: '/bower_components/font-awesome/css/font-awesome.min.css' },
+      { rel: 'stylesheet', href: '/bower_components/Ionicons/css/ionicons.min.css' },
+      { rel: 'stylesheet', href: '/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css' },
+      { rel: 'stylesheet', href: '/dist/css/AdminLTE.min.css' },
+      { rel: 'stylesheet', href: '/dist/css/skins/_all-skins.min.css' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic' },
+    ],
+    script: [
+      { src: 'bower_components/jquery/dist/jquery.min.js', body: true },
+      { src: 'bower_components/bootstrap/dist/js/bootstrap.min.js', body: true },
+      { src: 'bower_components/datatables.net-bs/js/jquery.dataTables.min.js', body: true },
+      { src: 'bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js', body: true },
+      { src: 'bower_components/jquery-slimscroll/jquery.slimscroll.min.js', body: true },
+      { src: 'bower_components/fastclick/lib/fastclick.js', body: true },
+      { src: 'dist/js/adminlte.min.js', body: true },
+      { src: 'dist/js/demo.js', body: true },
+      { src: 'dist/js/script.js', body: true },
     ]
   },
 
@@ -45,7 +63,7 @@ export default {
     '@nuxtjs/pwa',
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
-    'bootstrap-vue/nuxt',
+    // 'bootstrap-vue/nuxt',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

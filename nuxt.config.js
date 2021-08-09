@@ -1,3 +1,5 @@
+import webpack from 'webpack'
+
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
@@ -33,15 +35,20 @@ export default {
       { src: 'dist/js/script.js', body: true },
     ]
   },
+  // loadingIndicator: {
+  //   name: 'chasing-dots',
+  //   color: 'purple',
+  //   background: 'green'
+  // },
 
-  loading: '~/components/common/Loading.vue',
-
+  loading: false,
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    '~/plugins/axios.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -103,9 +110,18 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    plugins: [
+      new webpack.ProvidePlugin({
+        _: 'lodash'
+      })
+    ],
+    /*
+     ** You can extend webpack config here
+     */
+    extend(config, ctx) {}
   },
   server: {
     port: process.env.port, // default: 3000
     host: process.env.host // default: localhost
-  }
+  },
 }

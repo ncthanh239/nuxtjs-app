@@ -5,12 +5,13 @@ import utils from '~/helpers/utils'
 
 export const state = () => ({
 	data: [],
+	loading: true,
 	// queries: oldQueries,
 	error: null,
 	clear_error: true,
 	gridOptions: {
-			canEdit: true,
-			canDelete: true
+		canEdit: true,
+		canDelete: true
 	}
 })
 
@@ -20,6 +21,9 @@ export const mutations = {
 	},
 	setClearError(state, isClear) {
 		state.clear_error = isClear
+	},
+	pendingData(state, loading) {
+		state.loading = loading
 	}
 }
 
@@ -29,6 +33,7 @@ export const actions = {
 			const response = await this.$axios.get(API_LINK.USER_INFO)
 			const dataResponses = response.data
 			commit('put', dataResponses)
+			commit('pendingData', false)
 			console.log('response', response)
 		} catch (e) {
 			console.log('error', e)

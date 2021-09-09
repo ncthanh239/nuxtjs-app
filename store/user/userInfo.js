@@ -38,5 +38,15 @@ export const actions = {
 		} catch (e) {
 			console.log('error', e)
 		}
+	},
+	async deleteRecord({commit, state, dispatch}, params) {
+		try {
+			commit('pendingData', true)
+			const url = API_LINK.USER_INFO + '/delete/' + params.params.id
+			await this.$axios.delete(url)
+			dispatch('fetchDataUserInfo')
+		} catch (e) {
+			console.log('error', e)
+		}
 	}
 }

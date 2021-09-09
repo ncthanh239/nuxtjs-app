@@ -2,7 +2,8 @@ module.exports = {
   root: true,
   env: {
     browser: true,
-    node: true
+    node: true,
+    jquery: true
   },
   parserOptions: {
     parser: '@babel/eslint-parser',
@@ -16,5 +17,8 @@ module.exports = {
   plugins: [
   ],
   // add your custom rules here
-  rules: {}
+  rules: {
+    'no-console': 'off',
+  },
+  globals: { _: true }
 }

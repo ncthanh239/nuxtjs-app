@@ -64,6 +64,7 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/proxy',
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
@@ -71,14 +72,15 @@ export default {
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
     // 'bootstrap-vue/nuxt',
+    '@nuxtjs/auth-next',
+    'vue-sweetalert2/nuxt'
   ],
-
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     baseURL: process.env.API_URL || 'http://laravel-api.local/api/',
     debug: process.env.DEBUG || false,
     proxyHeaders: false,
-    credentials: false
+    credentials: false,
   },
   router: {
     routeNameSplitter: '/',
@@ -93,6 +95,16 @@ export default {
           path: '/user',
           name: 'user-index',
           component: 'pages/user/index.vue'
+        },
+        {
+          path: '/user/create',
+          name: 'user-create',
+          component: 'pages/user/create/index.vue'
+        },
+        {
+          path: '/user/edit/:id?',
+          name: 'user-edit',
+          component: 'pages/user/edit/_id.vue'
         },
       )
     }

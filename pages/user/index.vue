@@ -8,7 +8,7 @@
         <div class="box-body">
           <Loading :isLoading="loading"/>
           <NuxtLink to="/user/create/">
-            <button type="button" class="btn btn-sm btn-primary">New</button>
+            <button type="button" class="btn btn-sm btn-primary custom-btn">New</button>
           </NuxtLink>
           <table id="example" class="table table-striped table-bordered" style="width:100%">
             <thead>
@@ -75,6 +75,12 @@ export default {
       type: ACTION_TYPE.USER_INFO,
     })
   },
+  beforeUpdate() {
+    this.$nextTick(() => {
+      // console.log('in beforeCreate');
+      $('#example').DataTable();
+    });
+  },
   methods: {
     onClickDelete(rowData) {
       console.log('rowData', rowData);
@@ -118,5 +124,8 @@ export default {
 <style scoped>
   .title {
     text-align: center;
+  }
+  .custom-btn {
+    margin-bottom: 10px;
   }
 </style>

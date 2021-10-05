@@ -3,6 +3,9 @@ import webpack from 'webpack'
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
+  static: {
+    prefix: false
+  },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -16,7 +19,7 @@ export default {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', href: '/bower_components/bootstrap/dist/css/bootstrap.min.css' },
-      { rel: 'stylesheet', href: '/bower_components/font-awesome/css/font-awesome.min.css' },
+      { rel: 'stylesheet', href: '/bower_components/font-awesome/css/font-awesome.min.css', body: true },
       { rel: 'stylesheet', href: '/bower_components/Ionicons/css/ionicons.min.css' },
       { rel: 'stylesheet', href: '/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css' },
       { rel: 'stylesheet', href: '/dist/css/AdminLTE.min.css' },
@@ -32,7 +35,7 @@ export default {
       { src: 'bower_components/fastclick/lib/fastclick.js', body: true },
       { src: 'dist/js/adminlte.min.js', body: true },
       { src: 'dist/js/demo.js', body: true },
-      { src: 'dist/js/script.js', body: true },
+      { type: 'text/javascript', src: 'dist/js/script.js', body: true, defer: true },
     ]
   },
   // loadingIndicator: {
@@ -48,7 +51,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '~/plugins/axios.js'
+    '~/plugins/axios.js',
+    '~/plugins/script.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

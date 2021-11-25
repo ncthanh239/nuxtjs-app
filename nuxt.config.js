@@ -15,34 +15,26 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: '/bower_components/bootstrap/dist/css/bootstrap.min.css' },
-      { rel: 'stylesheet', href: '/bower_components/font-awesome/css/font-awesome.min.css' },
-      { rel: 'stylesheet', href: '/bower_components/Ionicons/css/ionicons.min.css' },
-      { rel: 'stylesheet', href: '/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css' },
-      { rel: 'stylesheet', href: '/dist/css/AdminLTE.min.css' },
-      { rel: 'stylesheet', href: '/dist/css/skins/_all-skins.min.css' },
+      { rel: 'stylesheet', href: 'admin-lte2/bower_components/bootstrap/dist/css/bootstrap.min.css' },
+      { rel: 'stylesheet', href: 'admin-lte2/bower_components/font-awesome/css/font-awesome.min.css' },
+      { rel: 'stylesheet', href: 'admin-lte2/bower_components/Ionicons/css/ionicons.min.css' },
+      { rel: 'stylesheet', href: 'admin-lte2/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css' },
+      { rel: 'stylesheet', href: 'admin-lte2/dist/css/AdminLTE.min.css' },
+      { rel: 'stylesheet', href: 'admin-lte2/dist/css/skins/_all-skins.min.css' },
+      { rel: 'stylesheet', href: 'admin-lte2/dist/css/style.css'},
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic' },
     ],
     script: [
-      { src: 'bower_components/jquery/dist/jquery.min.js', body: true },
-      { src: 'bower_components/bootstrap/dist/js/bootstrap.min.js', body: true },
-      { src: 'bower_components/datatables.net-bs/js/jquery.dataTables.min.js', body: true },
-      { src: 'bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js', body: true },
-      { src: 'bower_components/jquery-slimscroll/jquery.slimscroll.min.js', body: true },
-      { src: 'bower_components/fastclick/lib/fastclick.js', body: true },
-      { src: 'dist/js/adminlte.min.js', body: true },
-      { src: 'dist/js/demo.js', body: true },
-      { src: 'dist/js/script.js', body: true },
+      { src: 'admin-lte2/bower_components/jquery/dist/jquery.min.js', body: true },
+      { src: 'admin-lte2/bower_components/bootstrap/dist/js/bootstrap.min.js', body: true },
+      { src: 'admin-lte2/bower_components/jquery-slimscroll/jquery.slimscroll.min.js', body: true },
+      { src: 'admin-lte2/bower_components/fastclick/lib/fastclick.js', body: true },
+      { src: 'admin-lte2/dist/js/adminlte.min.js', body: true },
+      { src: 'admin-lte2/dist/js/demo.js', body: true },
     ]
   },
-  // loadingIndicator: {
-  //   name: 'chasing-dots',
-  //   color: 'purple',
-  //   background: 'green'
-  // },
 
-  loading: false,
-  // Global CSS: https://go.nuxtjs.dev/config-css
+  loading: '~/components/loading.vue',
   css: [
   ],
 
@@ -72,15 +64,53 @@ export default {
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
     // 'bootstrap-vue/nuxt',
-    '@nuxtjs/auth-next',
+    '@nuxtjs/auth',
     'vue-sweetalert2/nuxt'
   ],
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: {
+            url: 'login',
+            method: 'post',
+            propertyName: 'token',
+          },
+          logout: { url: 'logout', method: 'get' },
+          user: {
+            url: 'userInfo',
+            method: 'get',
+            propertyName: false
+          }
+        }
+      },
+      watchLoggedIn: true,
+      redirect: {
+        login: 'authentication/login',
+        logout: '/',
+        callback: 'authentication/login',
+        home: '/'
+      }
+    }
+  },
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: process.env.API_URL || 'http://laravel-api.local/api/',
-    debug: process.env.DEBUG || false,
-    proxyHeaders: false,
-    credentials: false,
+    // baseURL: process.env.API_URL || 'http://laravel-api.local/api/',
+    // debug: process.env.DEBUG || false,
+    // proxyHeaders: false,
+    // credentials: false,
+    proxy: true,
+    prefix: '/api/',
+    headers: { //optional
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    }
+  },
+  proxy: {
+    '/api/': {
+      target: process.env.API_URL,
+      pathRewrite: { '^/api/': '' },
+    },
   },
   router: {
     routeNameSplitter: '/',
@@ -105,6 +135,11 @@ export default {
           path: '/user/edit/:id?',
           name: 'user-edit',
           component: 'pages/user/edit/_id.vue'
+        },
+        {
+          path: '/authentication/login',
+          name: 'authentication-login',
+          component: 'pages/authentication/login.vue'
         },
       )
     }

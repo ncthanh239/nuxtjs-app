@@ -5,3 +5,8 @@ export const COMMON = {
 export const LIST_VUEX_STORE = {
     user_info_queries: 'user_info_queries',
 }
+
+export const LIST_TREEVIEW = {
+    '/user': 'user',
+    '/upload': 'upload'
+}

@@ -107,7 +107,7 @@
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="#" class="btn btn-default btn-flat" @click="logout()">Logout</a>
                 </div>
               </li>
             </ul>
@@ -118,8 +118,37 @@
   </header>
 </template>
 <script>
+import { mapGetters } from 'vuex'
+import { ACTION_TYPE } from '~/define_constant/action_type'
 export default {
-  computed: {
+  components: {
   },
+  computed: {
+    ...mapGetters(['loggedInUser'])
+  },
+  methods: {
+    async logout() {
+      this.$store.dispatch({
+        type: ACTION_TYPE.SET_LOADING,
+        loading: true
+      })
+      try {
+        await this.$auth.logout()
+        .then((response) => {
+          this.$store.dispatch({
+            type: ACTION_TYPE.SET_LOADING,
+            loading: false
+          })
+          this.$router.push({ path: '/authentication/login' })
+        })
+      } catch (e) {
+        console.log(e)
+        this.$store.dispatch({
+          type: ACTION_TYPE.SET_LOADING,
+          loading: false
+        })
+      }
+    }
+  }
 }
 </script>

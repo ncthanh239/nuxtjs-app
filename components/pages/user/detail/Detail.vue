@@ -7,7 +7,7 @@
           <h3 v-else class="box-title">Edit data</h3>
         </div>
         <div class="box-body">
-        <Loading :isLoading="loading"/>
+        <Loading :is-loading="loading"/>
           <form enctype="multipart/form-data" method="post" accept-charset="utf-8" @submit.prevent>
             <div class="form-group">
 							<label for="">Name</label>

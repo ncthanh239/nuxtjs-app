@@ -6,6 +6,7 @@
 import Detail from '~/components/pages/user/detail/Detail'
 import { ACTION_TYPE } from '~/define_constant/action_type'
 export default {
+  middleware: 'authenticated',
   layout: 'HomeLayout',
   components: {
     Detail
@@ -30,6 +31,10 @@ export default {
     }
   },
   created () {
+    this.$store.dispatch({
+      type: ACTION_TYPE.SET_ACTIVE_SIDEBAR,
+      url: '/user'
+    })
     const id = this.$route.params.id
     this.$store.dispatch({
         type: ACTION_TYPE.USER_INFO_DETAIL,

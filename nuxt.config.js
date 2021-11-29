@@ -95,23 +95,23 @@ export default {
   },
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    // baseURL: process.env.API_URL || 'http://laravel-api.local/api/',
-    // debug: process.env.DEBUG || false,
-    // proxyHeaders: false,
-    // credentials: false,
-    proxy: true,
-    prefix: '/api/',
-    headers: { //optional
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    }
+    baseURL: process.env.API_URL || 'http://ncthanh.xyz:81/api/',
+    debug: process.env.DEBUG || false,
+    proxyHeaders: false,
+    credentials: false,
+    // proxy: true,
+    // prefix: '/api/',
+    // headers: { //optional
+    //   Accept: 'application/json',
+    //   'Content-Type': 'application/json',
+    // }
   },
-  proxy: {
-    '/api/': {
-      target: process.env.API_URL,
-      pathRewrite: { '^/api/': '' },
-    },
-  },
+  // proxy: {
+  //   '/api/': {
+  //     target: process.env.API_URL,
+  //     pathRewrite: { '^/api/': '' },
+  //   },
+  // },
   router: {
     routeNameSplitter: '/',
     extendRoutes(routes, resolve) {

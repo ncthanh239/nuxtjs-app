@@ -6,11 +6,11 @@
 import Detail from '~/components/pages/user/detail/Detail'
 import { ACTION_TYPE } from '~/define_constant/action_type'
 export default {
-  middleware: 'authenticated',
-  layout: 'HomeLayout',
   components: {
     Detail
   },
+  layout: 'HomeLayout',
+  middleware: 'authenticated',
   data () {
     return {}
   },

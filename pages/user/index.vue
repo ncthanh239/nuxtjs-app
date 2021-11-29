@@ -67,11 +67,11 @@ import {ACTION_TYPE} from '~/define_constant/action_type'
 import Loading from '~/components/LoadingBar.vue'
 
 export default {
-  middleware: 'authenticated',
   components: {
     Loading
   },
   layout: 'HomeLayout',
+  middleware: 'authenticated',
   data () {
     return {
       searchQuery: null

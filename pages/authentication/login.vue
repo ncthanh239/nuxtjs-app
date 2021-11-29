@@ -57,12 +57,12 @@ export default {
         await this.$auth.loginWith('local', {data: this.user})
         .then((response) => {
           this.$nuxt.$loading.finish()
+          console.log('123123123123', response)
           const accessToken = response.data.token
           this.$store.dispatch({
             type: ACTION_TYPE.SET_ACCESS_TOKEN,
             accessToken
           })
-        console.log('123123123123')
         })
       } catch (e) {
         this.error = e.response.data.message

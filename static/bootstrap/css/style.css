@@ -1,0 +1,22 @@
+.label-filter {
+    font-weight: normal;
+    text-align: left;
+    white-space: nowrap;
+  }
+  .select-filter {
+    width: 75px;
+    display: inline-block;
+  }
+  .label-search {
+    font-weight: normal;
+    white-space: nowrap;
+    text-align: left;
+  }
+  .input-search {
+    margin-left: 0.5em;
+    display: inline-block;
+    width: auto;
+  }
+  .box-search {
+    text-align: right;
+  }

@@ -36,6 +36,8 @@ export default {
     script: [
       { src: '/plugins/jQuery/jquery-2.2.3.min.js', body: true },
       { src: '/bootstrap/js/bootstrap.min.js', body: true },
+      { src: '/bootstrap/js/adminlte.min.js', body: true },
+      { src: '/bootstrap/js/demo.js', body: true },
       { src: '/plugins/app.min.js', body: true },
       { src: '/plugins/jQueryUI/jquery-ui.min.js', body: true },
     ]

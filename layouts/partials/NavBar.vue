@@ -1,6 +1,6 @@
 <template>
   <header class="main-header">
-    <a href="../../index2.html" class="logo">
+    <a href="" class="logo">
       <!-- <span class="logo-mini"><b>N</b>CT</span> -->
       <span class="logo-lg">NCTHANH</span>
     </a>

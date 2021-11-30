@@ -16,8 +16,8 @@ export default {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/assets/img/favicon.ico' },
       { rel: 'stylesheet', href: '/bootstrap/css/bootstrap.min.css' },
+      { rel: 'stylesheet', href: '/bootstrap/css/AdminLTE.min.css' },
       { rel: 'stylesheet', href: '/bootstrap/css/style.css' },
-      { rel: 'stylesheet', href: '/bootstrap/css/dist/css/AdminLTE.min.css' },
       {
         rel: 'stylesheet',
         href: '/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css'
@@ -30,21 +30,14 @@ export default {
         rel: 'stylesheet',
         href: 'https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css'
       },
-      { rel: 'stylesheet', href: '/bootstrap/css/dist/css/skins/skin-red.min.css' },
-      { rel: 'stylesheet', href: '/bootstrap/css/dist/css/skins/skin-blue.min.css' },
+      { rel: 'stylesheet', href: '/bootstrap/css/skins/skin-red.min.css' },
+      { rel: 'stylesheet', href: '/bootstrap/css/skins/skin-blue.min.css' },
     ],
     script: [
       { src: '/plugins/jQuery/jquery-2.2.3.min.js', body: true },
       { src: '/bootstrap/js/bootstrap.min.js', body: true },
-      { src: '/dist/js/app.min.js', body: true },
-      { src: '/plugins/datepicker/bootstrap-datepicker.js', body: true },
-      {
-        src: '/plugins/datepicker/locales/bootstrap-datepicker.ja.js',
-        body: true
-      },
-      { src: '/plugins/daterangepicker/moment.min.js', body: true },
+      { src: '/plugins/app.min.js', body: true },
       { src: '/plugins/jQueryUI/jquery-ui.min.js', body: true },
-      { src: '/plugins/chartjs/Chart.min.js', body: true }
     ]
   },
 

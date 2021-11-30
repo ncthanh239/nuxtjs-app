@@ -17,7 +17,7 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/assets/img/favicon.ico' },
       { rel: 'stylesheet', href: '/bootstrap/css/bootstrap.min.css' },
       { rel: 'stylesheet', href: '/bootstrap/css/style.css' },
-      { rel: 'stylesheet', href: '/dist/css/AdminLTE.min.css' },
+      { rel: 'stylesheet', href: '/bootstrap/css/dist/css/AdminLTE.min.css' },
       {
         rel: 'stylesheet',
         href: '/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css'
@@ -30,8 +30,8 @@ export default {
         rel: 'stylesheet',
         href: 'https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css'
       },
-      { rel: 'stylesheet', href: '/dist/css/skins/skin-red.min.css' },
-      { rel: 'stylesheet', href: '/dist/css/skins/skin-blue.min.css' },
+      { rel: 'stylesheet', href: '/bootstrap/css/dist/css/skins/skin-red.min.css' },
+      { rel: 'stylesheet', href: '/bootstrap/css/dist/css/skins/skin-blue.min.css' },
     ],
     script: [
       { src: '/plugins/jQuery/jquery-2.2.3.min.js', body: true },

@@ -1,11 +1,13 @@
 <template>
-  <NuxtLink to="/user">User page</NuxtLink>
+  <div>
+    <nuxt-link :to="{path: '/user'}">User</nuxt-link>
+  </div>
 </template>
 
 <script>
+
 export default {
   layout: 'HomeLayout',
-  created() {
-  }
+  middleware: 'authenticated',
 }
 </script>

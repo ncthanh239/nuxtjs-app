@@ -5,11 +5,30 @@
         <div class="box-header">
           <h3 class="box-title">Data Table With Full Features</h3>
         </div>
-        <div class="box-body">
-          <Loading :isLoading="loading"/>
           <NuxtLink to="/user/create/">
             <button type="button" class="btn btn-sm btn-primary">New</button>
           </NuxtLink>
+        <div class="box-body">
+          
+          <div class="col-sm-6">
+            
+            <div>
+              <label class="label-filter">
+                  Show
+                  <select name="example1_length" aria-controls="example1" class="form-control input-sm select-filter">
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                  </select>
+                  entries
+              </label>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="box-search"><label class="label-search">Search:<input v-model="searchQuery" type="search" class="form-control input-sm input-search" placeholder="" aria-controls="example1"></label></div>
+          </div>
+          <Loading :is-loading="loading"/>
           <table id="example" class="table table-striped table-bordered" style="width:100%">
             <thead>
                 <tr>
@@ -22,7 +41,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="data in dataUserInfo" :key="data.id">
+                <tr v-for="data in resultQuery" :key="data.id">
                     <td v-if="actionCanEdit">
                       <button class="btn btn-sm btn-warning" @click="onClickEdit(data.id)">Edit</button>
                     </td>
@@ -48,12 +67,15 @@ import {ACTION_TYPE} from '~/define_constant/action_type'
 import Loading from '~/components/LoadingBar.vue'
 
 export default {
-  layout: 'HomeLayout',
   components: {
     Loading
   },
+  layout: 'HomeLayout',
+  middleware: 'authenticated',
   data () {
-    return {}
+    return {
+      searchQuery: null
+    }
   },
   computed: {
     dataUserInfo() {
@@ -68,9 +90,22 @@ export default {
     },
     actionCanDelete() {
       return this.$store.state.user.userInfo.gridOptions.canDelete
+    },
+    resultQuery(){
+      if(this.searchQuery){
+        return this.dataUserInfo.filter((item)=>{
+          return this.searchQuery.toLowerCase().split('').every(v => item.name.toLowerCase().includes(v))
+        })
+      }else{
+        return this.dataUserInfo;
+      }
     }
   },
   created () {
+    this.$store.dispatch({
+      type: ACTION_TYPE.SET_ACTIVE_SIDEBAR,
+      url: '/user'
+    })
     this.$store.dispatch({
       type: ACTION_TYPE.USER_INFO,
     })
@@ -115,8 +150,9 @@ export default {
   },
 }
 </script>
-<style scoped>
+<style>
   .title {
     text-align: center;
   }
+  
 </style>

@@ -21,36 +21,24 @@
       </form>
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><NuxtLink to="/user"><i class="fa fa-circle-o"></i> User page</NuxtLink></li>
-          </ul>
+        <li :class="getActiveClassTreeview('user')">
+          <NuxtLink to="/user">
+            <i class="fa fa-dashboard"></i> <span>User</span>
+          </NuxtLink>
         </li>
-        <li class="treeview">
-          <a href="#">
+        <li :class="getActiveClassTreeview('upload')">
+          <NuxtLink to="/upload">
             <i class="fa fa-pie-chart"></i>
-            <span>Charts</span>
-            <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="../charts/chartjs.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>
-          </ul>
+            <span>Upload</span>
+          </NuxtLink>
         </li>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-laptop"></i>
             <span>UI Elements</span>
             <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
           </a>
           <ul class="treeview-menu">
             <li><a href="../UI/general.html"><i class="fa fa-circle-o"></i> General</a></li>
@@ -67,7 +55,7 @@
             <li><a href="../forms/general.html"><i class="fa fa-circle-o"></i> General Elements</a></li>
           </ul>
         </li>
-        <li class="treeview active">
+        <li class="treeview">
           <a href="#">
             <i class="fa fa-table"></i> <span>Tables</span>
             <span class="pull-right-container">
@@ -83,7 +71,21 @@
   </aside>
 </template>
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'Sidebar',
+  computed: {
+    ...mapGetters(['getTreeview', 'getNowpage'])
+  },
+  methods: {
+    getActiveClassTreeview(treeView) {
+      if (treeView === this.getTreeview) return 'treeview active'
+      return 'treeview'
+    },
+    getNowPage(page) {
+      if (page === this.getNowpage) return 'now_page'
+      return ''
+    }
+  }
 }
 </script>

@@ -4,11 +4,13 @@
 
 <script>
 import Detail from '~/components/pages/user/detail/Detail'
+import { ACTION_TYPE } from '~/define_constant/action_type'
 export default {
-  layout: 'HomeLayout',
   components: {
     Detail
   },
+  layout: 'HomeLayout',
+  middleware: 'authenticated',
   data () {
     return {}
   },
@@ -27,6 +29,10 @@ export default {
     }
   },
   created () {
+    this.$store.dispatch({
+      type: ACTION_TYPE.SET_ACTIVE_SIDEBAR,
+      url: '/user'
+    })
     this.$store.commit('user/userInfoDetail/setIsCreate', true)
     this.$store.commit('user/userInfoDetail/put', null)
     this.$store.commit('user/userInfoDetail/pendingData', false)

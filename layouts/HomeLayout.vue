@@ -19,6 +19,7 @@
         <nuxt />
       </section>
     </div>
+    <Loading :is-loading="loading"/>
     <Footer />
   </div>
 </div>
@@ -29,15 +30,21 @@
 import NavBar from './partials/NavBar'
 import SideBar from './partials/SideBar'
 import Footer from './partials/Footer'
+import Loading from '~/components/LoadingBar.vue'
 
 export default {
   components: {
     NavBar,
     SideBar,
-    Footer
+    Footer,
+    Loading
+  },
+  computed: {
+    loading() {
+      return this.$store.state.loading
+    }
   },
   mounted() {
-    // $('#example').DataTable();
   }
 }
 // Vue.mixin(global)

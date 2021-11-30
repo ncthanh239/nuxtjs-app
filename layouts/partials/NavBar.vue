@@ -26,7 +26,7 @@
                   <li>
                     <a href="#">
                       <div class="pull-left">
-                        <img src="/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                        <img src="/bootstrap/img/avatar_jisoo.jpg" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         Support Team
@@ -91,12 +91,12 @@
           </li>
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <img src="/bootstrap/img/avatar_jisoo.jpg" class="user-image" alt="User Image">
               <span class="hidden-xs">Alexander Pierce</span>
             </a>
             <ul class="dropdown-menu">
               <li class="user-header">
-                <img src="/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="/bootstrap/img/avatar_jisoo.jpg" class="img-circle" alt="User Image">
                 <p>
                   Alexander Pierce - Web Developer
                   <small>Member since Nov. 2012</small>
@@ -152,3 +152,8 @@ export default {
   }
 }
 </script>
+<style>
+.logo-lg {
+  font-family: cursive!important;;
+}
+</style>

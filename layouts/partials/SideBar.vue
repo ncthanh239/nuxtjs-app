@@ -6,7 +6,7 @@
           <img src="/bootstrap/img/avatar_jisoo.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Alexander Pierce</p>
+          <p v-if="loggedInUser && loggedInUser.name">{{ loggedInUser.name }}</p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -21,14 +21,19 @@
       </form>
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
+        <li :class="getActiveClassTreeview('dashboard')">
+          <NuxtLink to="/">
+            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+          </NuxtLink>
+        </li>
         <li :class="getActiveClassTreeview('user')">
           <NuxtLink to="/user">
-            <i class="fa fa-dashboard"></i> <span>User</span>
+            <i class="fa fa-user"></i> <span>User</span>
           </NuxtLink>
         </li>
         <li :class="getActiveClassTreeview('upload')">
           <NuxtLink to="/upload">
-            <i class="fa fa-pie-chart"></i>
+            <i class="fa fa-upload"></i>
             <span>Upload</span>
           </NuxtLink>
         </li>
@@ -75,7 +80,7 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'Sidebar',
   computed: {
-    ...mapGetters(['getTreeview', 'getNowpage'])
+    ...mapGetters(['getTreeview', 'getNowpage', 'loggedInUser'])
   },
   methods: {
     getActiveClassTreeview(treeView) {

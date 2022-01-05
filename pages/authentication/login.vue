@@ -1,9 +1,10 @@
 <template>
   <div class="login-box">
     <div class="login-logo">
-      <a href=""><b>Admin</b>LTE</a>
+      <a href=""><b>NCTHANH</b></a>
     </div>
     <div class="login-box-body">
+      <span v-if="errorAuthorized" class="help-block error-authorized">{{ errorAuthorized }}</span>
       <p class="login-box-msg">Login to start your session</p>
       <form action="#" method="post" @submit.prevent>
       <div class="form-group" :class="error && error.email ? 'has-error': ''">
@@ -47,7 +48,8 @@ export default {
         email: '',
         password: ''
       },
-      error: null
+      error: null,
+      errorAuthorized: null
     }
   },
   methods: {
@@ -65,11 +67,21 @@ export default {
           })
         })
       } catch (e) {
-        this.error = e.response.data.message
-        console.log('12313', this.error)
+        if (typeof (e.response.data.message) === 'string') {
+          this.errorAuthorized = e.response.data.message
+        } else {
+          this.errorAuthorized = null
+          this.error = e.response.data.message
+        }
         this.$nuxt.$loading.finish()
       }
     }
   }
 }
 </script>
+<style scoped>
+.error-authorized {
+  text-align: center;
+  color: red;
+}
+</style>

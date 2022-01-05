@@ -20,6 +20,7 @@
       </section>
     </div>
     <Loading :is-loading="loading"/>
+    <PlayerControls />
     <Footer />
   </div>
 </div>
@@ -30,6 +31,7 @@
 import NavBar from './partials/NavBar'
 import SideBar from './partials/SideBar'
 import Footer from './partials/Footer'
+import PlayerControls from './partials/PlayerControls'
 import Loading from '~/components/LoadingBar.vue'
 
 export default {
@@ -37,6 +39,7 @@ export default {
     NavBar,
     SideBar,
     Footer,
+    PlayerControls,
     Loading
   },
   computed: {

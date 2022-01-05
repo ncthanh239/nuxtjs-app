@@ -92,14 +92,14 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="/bootstrap/img/avatar_jisoo.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs" v-if="loggedInUser && loggedInUser.name">{{ loggedInUser.name }}</span>
             </a>
             <ul class="dropdown-menu">
               <li class="user-header">
                 <img src="/bootstrap/img/avatar_jisoo.jpg" class="img-circle" alt="User Image">
-                <p>
-                  Alexander Pierce - Web Developer
-                  <small>Member since Nov. 2012</small>
+                <p v-if="loggedInUser && loggedInUser.name">
+                  {{ loggedInUser.name }}
+                  <small v-if="loggedInUser && loggedInUser.email">{{ loggedInUser.email }}</small>
                 </p>
               </li>
               <li class="user-footer">
@@ -125,6 +125,9 @@ export default {
   },
   computed: {
     ...mapGetters(['loggedInUser'])
+  },
+  created() {
+    console.log('user', this.loggedInUser)
   },
   methods: {
     async logout() {
@@ -154,6 +157,6 @@ export default {
 </script>
 <style>
 .logo-lg {
-  font-family: cursive!important;;
+  font-family: cursive !important;;
 }
 </style>

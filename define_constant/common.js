@@ -7,6 +7,7 @@ export const LIST_VUEX_STORE = {
 }
 
 export const LIST_TREEVIEW = {
+    '/': 'dashboard',
     '/user': 'user',
     '/upload': 'upload'
 }
